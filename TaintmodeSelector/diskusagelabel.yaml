@@ -1,15 +1,21 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: taint-node-selector-exp-1
+  name: taint-node-selector-exp-2
   labels:
-    name: taint-node-selector-exp-1
+    name: taint-node-selector-exp-2
 spec:
   containers:
-  - name: taint-node-selector-exp-1
+  - name: taint-node-selector-exp-2
     image: nginx
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "200Mi"
+      limits:
+        cpu: "2"
+        memory: "1000Mi"
     ports:
       - containerPort: 80
   nodeSelector:
     custom-label-kubernetes.io/disk_allocate: ssd
-    
