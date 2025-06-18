@@ -14,5 +14,5 @@ spec:
   tolerations:
   - key: "custom-label.kubernetes.io"
     operator: "Equal"
-    value: "highcpuusages" 
+    value: "highcpu" 
     effect: "NoSchedule"
