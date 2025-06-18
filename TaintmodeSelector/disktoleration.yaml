@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: node-selector-example
+  name: node-selector-example-4
   labels:
-    name: node-selector-example
+    name: node-selector-example-4
 spec:
   containers:
-  - name: node-selector-example
+  - name: node-selector-example-4
     image: nginx
     resources:
     ports:
