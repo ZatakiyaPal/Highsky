@@ -1,0 +1,39 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-app-affinity
+  namespace: default
+  labels:
+    application : green-app-affinity
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      application: green-app-affinity
+  template:
+    metadata:
+      labels:
+        application: green-app-affinity
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "100Mi"
+          limits: 
+            cpu: "200m"
+            memory: "200Mi"       
+        ports:
+        - containerPort: 80
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:  
+              - key: app
+                operator: In
+                values: 
+                - green  
